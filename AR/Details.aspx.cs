@@ -27,8 +27,8 @@ namespace AR
         //connection string, change the .db file url in webconfig file, point to your local system path where file is resided.
         private void setConnection()
         {
-            //con = new SQLiteConnection(ConfigurationManager.ConnectionStrings["datasource"].ConnectionString);
-            con = new SQLiteConnection("Data Source= C:\\Users\\rizwan\\Downloads\\AgeRanger.db ; New= False");
+           con = new SQLiteConnection(ConfigurationManager.ConnectionStrings["datasource"].ConnectionString);
+           // con = new SQLiteConnection("Data Source= C:\\Users\\rizwan\\Downloads\\AgeRanger.db ; New= False");
         }
 
         protected void btn_Save_Click(object sender, EventArgs e)
@@ -40,7 +40,7 @@ namespace AR
                 cmd.CommandText = "insert into person (FirstName,LastName,Age) values('" + txt_fName.Text.Trim() + "','" + txt_lname.Text.Trim() + "','" + txt_age.Text.Trim() + "')";
                 cmd.ExecuteNonQuery();
             }
-            catch (Exception ex) { lbl_txt.Text = ex.Message; }
+            catch (Exception ex) { Response.Write("<script>alert(ex.message)</script>"); }
             finally
             {
                 cleardata();
@@ -76,10 +76,10 @@ namespace AR
                     Grid.DataBind();
                 }
                 else
-                { lbl_txt.Text = "No Data found"; }
+                { Response.Write("<script>alert('No Data Found')</script>"); }
             }
             catch (Exception ex)
-            { lbl_txt.Text = ex.Message; }
+            { Response.Write("<script>alert(ex.message)</script>"); }
             finally
             {
                 con.Close();
@@ -132,7 +132,7 @@ namespace AR
                 LoadData("update");
             }
             catch(Exception ex)
-            { lbl_txt.Text = ex.Message; }
+            { Response.Write("<script>alert(ex.message)</script>"); }
             finally
             { con.Close(); }
         }
@@ -150,9 +150,9 @@ namespace AR
 
         protected void btn_search_Click(object sender, EventArgs e)
         {
-            lbl_txt.Text = "";
+            //lbl_txt.Text = "";
             if (txt_age.Text != string.Empty)
-                lbl_txt.Text = "Please search using first name or lastname";
+                Response.Write("<script>alert('Please search using first name or lastname')</script>"); 
             else
             {
                 //txt_age.Enabled = false;

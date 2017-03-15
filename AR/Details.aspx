@@ -33,7 +33,7 @@
                     
                     <tr>
                         
-                        <td class="text-right" colspan="2"><asp:Label ID="lbl_txt" runat="server" CssClass="label-warning" /><asp:Button ID="btn_clear" runat="server" Text="Clear" CssClass="btn btn-primary" OnClick="btn_clear_Click" />
+                        <td class="text-right" colspan="2"><asp:Button ID="btn_clear" runat="server" Text="Clear" CssClass="btn btn-primary" OnClick="btn_clear_Click" />
                         <asp:Button ID="btn_Save" runat="server" Text="Save" OnClick="btn_Save_Click" CssClass="btn btn-primary" />
                             <asp:Button ID="btn_search" runat="server" Text="Search" CssClass="btn btn-primary" OnClick="btn_search_Click" />
                         </td>
